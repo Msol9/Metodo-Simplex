@@ -6,6 +6,7 @@ import java.util.Scanner;
         double X1, X2;
         byte restricciones, fila;
         double [][] tablaSimplex = new double[6][3];
+        byte columnaPivote, filaPivote;
         do{
 
         System.out.println("Metodo simplex:");
@@ -37,6 +38,12 @@ import java.util.Scanner;
                 tablaSimplex[restricciones][0]=(-1)*X1;
                 tablaSimplex[restricciones][1]=(-1)*X2;
                 tablaSimplex[restricciones][2]=0;
+
+                if(tablaSimplex [restricciones][0]< tablaSimplex[restricciones][1]){
+                    columnaPivote=0;
+                }else{
+                    columnaPivote=1;
+                }
             }
             case 2->{
                 System.out.println("Minimizacion");
@@ -61,6 +68,13 @@ import java.util.Scanner;
                 tablaSimplex[restricciones][0]=X1;
                 tablaSimplex[restricciones][1]=X2;
                 tablaSimplex[restricciones][2]=0;
+
+                if(tablaSimplex [restricciones][0]< tablaSimplex[restricciones][1]){
+                    columnaPivote=0;
+                }else{
+                    columnaPivote=1;
+                }
+                
 
             }
             default->{
