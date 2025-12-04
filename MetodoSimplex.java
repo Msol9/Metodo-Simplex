@@ -4,6 +4,8 @@ import java.util.Scanner;
         Scanner lector= new Scanner (System.in);
         byte opcion;
         double X1, X2;
+        byte restricciones, fila;
+        double [][] tablaSimplex = new double[6][3];
         do{
 
         System.out.println("Metodo simplex:");
@@ -19,6 +21,22 @@ import java.util.Scanner;
                 X1=lector.nextDouble();
                 System.out.println("Ingresa el coeficiente de X2:");
                 X2=lector.nextDouble();
+
+                System.out.println("Ingresa el numero de restricciones (Max. 5):");
+                restricciones= lector.nextByte();
+
+                for(fila = 0;fila < restricciones; fila++){
+                    System.out.println("Restriccion " + (fila + 1));
+                    System.out.println("Coeficiente X1: ");
+                    tablaSimplex[fila][0]=lector.nextDouble();
+                    System.out.println("Coeficiente X2: ");
+                    tablaSimplex[fila][1]=lector.nextDouble();
+                    System.out.println("<= : ");
+                    tablaSimplex[fila][2]=lector.nextDouble();
+                }
+                tablaSimplex[restricciones][0]=(-1)*X1;
+                tablaSimplex[restricciones][1]=(-1)*X2;
+                tablaSimplex[restricciones][2]=0;
             }
             case 2->{
                 System.out.println("Minimizacion");
