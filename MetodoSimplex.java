@@ -44,6 +44,24 @@ import java.util.Scanner;
                 X1=lector.nextDouble();
                 System.out.println("Ingresa el coeficiente de X2:");
                 X2=lector.nextDouble();
+
+
+                System.out.println("Ingresa el numero de restricciones (Max. 5):");
+                restricciones= lector.nextByte();
+
+                for(fila = 0;fila < restricciones; fila++){
+                    System.out.println("Restriccion " + (fila + 1));
+                    System.out.println("Coeficiente X1: ");
+                    tablaSimplex[fila][0]=lector.nextDouble();
+                    System.out.println("Coeficiente X2: ");
+                    tablaSimplex[fila][1]=lector.nextDouble();
+                    System.out.println("<= : ");
+                    tablaSimplex[fila][2]=lector.nextDouble();
+                }
+                tablaSimplex[restricciones][0]=X1;
+                tablaSimplex[restricciones][1]=X2;
+                tablaSimplex[restricciones][2]=0;
+
             }
             default->{
                 if (opcion!=3) {
