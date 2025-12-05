@@ -3,7 +3,7 @@ import java.util.Scanner;
     public static void main (String [] args){
         Scanner lector= new Scanner (System.in);
         byte opcion;
-        double X1, X2, menorCociente, cociente, pivote, multiplicador;
+        double X1, X2, menorCociente, cociente, pivote, multiplicador, solucionX1, solucionX2, solucionZ;
         byte restricciones, fila;
         double [][] tablaSimplex = new double[6][3];
         byte columnaPivote, filaPivote;
@@ -71,6 +71,10 @@ import java.util.Scanner;
                     }
                 }
             }
+            solucionX1=tablaSimplex[0][2];
+            solucionX2=tablaSimplex[1][2];
+            solucionZ=tablaSimplex[restricciones][2];
+        }
             case 2->{
                 System.out.println("Minimizacion");
                 System.out.println("Ingresa el coeficiente de X1:");
