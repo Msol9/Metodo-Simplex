@@ -1,0 +1,1 @@
+Programa en Java que resuelve problemas de optimización lineal usando el método simplex. Permite maximizar o minimizar funciones con hasta 2 variables y 5 restricciones. Elaborado por: Marisol Barrera Vazquez.
