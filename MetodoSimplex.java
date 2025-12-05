@@ -74,6 +74,11 @@ import java.util.Scanner;
             solucionX1=tablaSimplex[0][2];
             solucionX2=tablaSimplex[1][2];
             solucionZ=tablaSimplex[restricciones][2];
+
+            System.out.println("\nResultados finales: ");
+            System.out.println("X1 = " + solucionX1);
+            System.out.println("X2 = " + solucionX2);
+            System.out.println("Z = "+ solucionZ);
         }
             case 2->{
                 System.out.println("Minimizacion");
