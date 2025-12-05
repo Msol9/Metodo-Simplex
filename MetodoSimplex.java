@@ -39,7 +39,6 @@ import java.util.Scanner;
                 tablaSimplex[restricciones][1]=(-1)*X2;
                 tablaSimplex[restricciones][2]=0;
 
-                while(tablaSimplex[restricciones][0] < 0 || tablaSimplex[restricciones][1] < 0){
                     if(tablaSimplex [restricciones][0]< tablaSimplex[restricciones][1]){
                         columnaPivote=0;
                     }else{
@@ -67,10 +66,10 @@ import java.util.Scanner;
                     if(fila!= filaPivote){
                         multiplicador=tablaSimplex[fila][columnaPivote];
                         for(int i=0;i<3;i++)
-                            tablaSimplex[fila][j]-=multiplicador*tablaSimplex[filaPivote][i];
+                            tablaSimplex[fila][i]-=multiplicador*tablaSimplex[filaPivote][i];
                     }
                 }
-            }
+            
             solucionX1=tablaSimplex[0][2];
             solucionX2=tablaSimplex[1][2];
             solucionZ=tablaSimplex[restricciones][2];
@@ -104,15 +103,45 @@ import java.util.Scanner;
                 tablaSimplex[restricciones][1]=X2;
                 tablaSimplex[restricciones][2]=0;
 
-                while(tablaSimplex[restricciones][0] >0 || tablaSimplex[restricciones][1] > 0){
                     if(tablaSimplex [restricciones][0]< tablaSimplex[restricciones][1]){
                         columnaPivote=0;
                     }else{
                         columnaPivote=1;
                     }
+                
+                menorCociente=Double.MAX_VALUE;
+                for(fila=0;fila<restricciones;fila++){
+                    if (tablaSimplex[fila][columnaPivote]>0) {
+                        cociente = tablaSimplex[fila][2]/tablaSimplex [fila][columnaPivote];
+                        if(cociente<menorCociente){
+                            menorCociente=cociente;
+                            filaPivote=fila;
+                        }
+                        
+                    }
+                }
+                pivote= tablaSimplex[filaPivote][columnaPivote];
+                for(int i=0; i<3; i++){
+                    tablaSimplex [filaPivote][i]/=pivote;
                 }
                 
+                for(fila=0;fila<=restricciones;fila++){
+                    if(fila!= filaPivote){
+                        multiplicador=tablaSimplex[fila][columnaPivote];
+                        for(int i=0;i<3;i++)
+                            tablaSimplex[fila][i]-=multiplicador*tablaSimplex[filaPivote][i];
+                    }
+                }
+            
+            solucionX1=tablaSimplex[0][2];
+            solucionX2=tablaSimplex[1][2];
+            solucionZ=tablaSimplex[restricciones][2];
 
+            System.out.println("\nResultados finales: ");
+            System.out.println("X1 = " + solucionX1);
+            System.out.println("X2 = " + solucionX2);
+            System.out.println("Z = "+ solucionZ);
+            }
             }
             default->{
                 if (opcion!=3) {
