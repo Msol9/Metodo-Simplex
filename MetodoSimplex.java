@@ -3,7 +3,7 @@ import java.util.Scanner;
     public static void main (String [] args){
         Scanner lector= new Scanner (System.in);
         byte opcion;
-        double X1, X2;
+        double X1, X2, menorCociente, cociente;
         byte restricciones, fila;
         double [][] tablaSimplex = new double[6][3];
         byte columnaPivote, filaPivote;
@@ -39,10 +39,24 @@ import java.util.Scanner;
                 tablaSimplex[restricciones][1]=(-1)*X2;
                 tablaSimplex[restricciones][2]=0;
 
-                if(tablaSimplex [restricciones][0]< tablaSimplex[restricciones][1]){
-                    columnaPivote=0;
-                }else{
-                    columnaPivote=1;
+                while(tablaSimplex[restricciones][0] < 0 || tablaSimplex[restricciones][1] < 0){
+                    if(tablaSimplex [restricciones][0]< tablaSimplex[restricciones][1]){
+                        columnaPivote=0;
+                    }else{
+                        columnaPivote=1;
+                    }
+                }
+
+                menorCociente=Double.MAX_VALUE;
+                for(fila=0;fila<restricciones;fila++){
+                    if (tablaSimplex[fila][columnaPivote]<0) {
+                        cociente = tablaSimplex[fila][2]/tablaSimplex [fila][columnaPivote];
+                        if(cociente<menorCociente){
+                            menorCociente=cociente;
+                            filaPivote=fila;
+                        }
+                        
+                    }
                 }
             }
             case 2->{
@@ -69,10 +83,12 @@ import java.util.Scanner;
                 tablaSimplex[restricciones][1]=X2;
                 tablaSimplex[restricciones][2]=0;
 
-                if(tablaSimplex [restricciones][0]< tablaSimplex[restricciones][1]){
-                    columnaPivote=0;
-                }else{
-                    columnaPivote=1;
+                while(tablaSimplex[restricciones][0] < 0 || tablaSimplex[restricciones][1] < 0){
+                    if(tablaSimplex [restricciones][0]< tablaSimplex[restricciones][1]){
+                        columnaPivote=0;
+                    }else{
+                        columnaPivote=1;
+                    }
                 }
                 
 
